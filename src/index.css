@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* JANETE PALETTE: Black, White, Sage Green (#576753) */
+  
+  --color-emerald-50: #f3f5f2; 
+  --color-emerald-100: #e3e8e1; 
+  --color-emerald-200: #c8cfc5; 
+  --color-emerald-300: #a3b09e; 
+  --color-emerald-400: #7d8c76; 
+  --color-emerald-500: #576753; /* Primary Sage Green */
+  --color-emerald-600: #455242; 
+  --color-emerald-700: #364134; 
+  --color-emerald-800: #2a3228; 
+  --color-emerald-900: #212620; 
+  --color-emerald-950: #141813; /* Almost Black for maximum text contrast */
+
+  --color-stone-50: #fafafa;
+  --color-stone-100: #f4f4f5;
+  --color-stone-200: #e4e4e7;
+  --color-stone-300: #d4d4d8; 
+  --color-stone-800: #27272a;
+
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  @apply bg-stone-50 text-emerald-950 font-sans antialiased overflow-x-hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+::-webkit-scrollbar-thumb {
+  background: #c8cfc5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #576753;
+}
+
+/* Button Animations */
+@keyframes shimmer {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(200%) skewX(-20deg); }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmer 3s infinite;
+  z-index: 10;
+}
