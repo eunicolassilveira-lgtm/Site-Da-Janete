@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Phone, ChevronDown, ChevronRight, Droplet, Wind, EyeOff, HeartCrack, ArrowRight, ArrowLeftRight, Sparkles, Heart, Search, CheckCircle, Check, MapPin, MessageCircle } from 'lucide-react';
+import { Phone, ChevronDown, ChevronRight, Droplet, Wind, EyeOff, HeartCrack, ArrowRight, ArrowLeftRight, Sparkles, Heart, Search, CheckCircle, Check, MapPin, MessageCircle, Play, Pause, Quote } from 'lucide-react';
 
 /* --- SMART IMAGE SLIDER COMPONENT --- */
 const SmartSlider = ({ before, after, label }: { before: string, after: string, label: string }) => {
@@ -155,7 +155,7 @@ export default function App() {
       </motion.header>
 
       {/* HUGE EMOTIONAL HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col justify-center px-6 overflow-hidden">
+      <section className="relative min-h-[100svh] flex flex-col justify-start pt-24 md:pt-0 md:justify-center px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
           {/* Stunning emotional image of a woman loving her hair */}
           <img 
@@ -169,7 +169,7 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-emerald-950/60 to-emerald-950/30" />
         </div>
         
-        <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-12 items-center text-center mt-20 md:mt-12">
+        <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-12 items-center text-center mt-0 md:mt-12">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-4xl flex flex-col items-center">
             <motion.div variants={fadeUp} className="inline-flex items-center justify-center mx-auto gap-2 px-5 py-2 rounded-full border border-emerald-200/20 bg-emerald-950/40 backdrop-blur-md mb-8 shadow-2xl">
               <Sparkles className="text-amber-200" size={14} />
@@ -184,7 +184,7 @@ export default function App() {
       </section>
 
       {/* EMOTIONAL PAIN POINTS - CHECKLIST */}
-      <section className="py-24 bg-stone-50 text-emerald-950 px-6 relative">
+      <section className="py-16 md:py-20 bg-stone-50 text-emerald-950 px-6 relative">
         <div className="max-w-5xl mx-auto relative z-10 bg-white rounded-[3rem] p-10 md:p-14 border border-stone-200/80 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] flex flex-col md:flex-row gap-12 items-center">
           
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="md:w-5/12 text-center md:text-left">
@@ -258,9 +258,9 @@ export default function App() {
       </section>
 
       {/* INTERACTIVE EMOTIONAL TRANSFORMATION */}
-      <section className="py-32 px-6 bg-white overflow-hidden">
+      <section className="py-16 md:py-20 px-6 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center max-w-4xl mx-auto mb-16 md:mb-20">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold md:font-medium text-emerald-950 mb-6 leading-[1.2] md:leading-tight">
               Veja dois casos que, segundo os médicos, <br className="hidden md:block"/><span className="italic text-emerald-500">não tinham mais solução.</span>
             </h2>
@@ -288,28 +288,89 @@ export default function App() {
         </div>
       </section>
 
+      {/* FEEDBACK SECTION */}
+      <section className="py-16 md:py-20 px-6 bg-stone-50">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12 md:mb-16">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold md:font-medium text-emerald-950 mb-6 leading-[1.2]">
+              Histórias de quem confiou em mim
+            </h2>
+            <p className="text-lg text-emerald-800/80">
+              Veja e ouça o relato de quem viveu essa transformação.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
+            
+            {/* WHATSAPP PRINT feedback */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="bg-white p-6 md:p-8 rounded-[2rem] border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col items-center justify-center h-full hover:shadow-[0_20px_50px_rgba(87,103,83,0.2)] transition-shadow duration-300">
+              <div className="w-full max-w-sm mx-auto overflow-hidden rounded-2xl border border-stone-100 mb-6 bg-stone-100 flex items-center justify-center">
+                <img 
+                  src="https://github.com/eunicolassilveira-lgtm/Site-Da-Janete/blob/main/WhatsApp%20Image%202026-06-07%20at%2015.40.54.jpeg?raw=true" 
+                  alt="Relato recebido por WhatsApp" 
+                  className="w-full h-auto object-cover max-h-[400px] object-top"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="text-center w-full">
+                 <p className="text-sm font-bold text-emerald-900/60 uppercase tracking-wider">Relato recebido por WhatsApp</p>
+              </div>
+            </motion.div>
+
+            {/* AUDIO feedback */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="bg-white p-6 md:p-8 rounded-[2rem] border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col justify-center h-full hover:shadow-[0_20px_50px_rgba(87,103,83,0.2)] transition-shadow duration-300 relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-8 opacity-5">
+                  <Quote size={120} />
+               </div>
+               
+               <div className="relative z-10 flex flex-col h-full justify-center">
+                 <div className="flex items-center gap-4 mb-8">
+                   <div className="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                     <Quote className="text-emerald-600" size={24} />
+                   </div>
+                   <div>
+                     <h3 className="font-serif font-bold text-2xl text-emerald-950">Ouça o relato de um paciente</h3>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-stone-50 rounded-2xl p-6 border border-emerald-100 w-full mb-6">
+                    {/* Native player wrapper styling */}
+                    <audio controls className="w-full h-12 outline-none" preload="metadata">
+                      {/* O arquivo real de aúdio será adicionado aqui depois */}
+                      <source src="https://raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/depoimento-audio_2.mp3" type="audio/mpeg" />
+                      Seu navegador não suporta o elemento de áudio.
+                    </audio>
+                 </div>
+                 
+                 <div className="text-center w-full mt-auto">
+                    <p className="text-sm font-bold text-emerald-900/60 uppercase tracking-wider">Relato recebido em áudio</p>
+                 </div>
+               </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
       {/* PRODUCTS STRATEGY */}
-      <section id="planos" className="py-32 bg-stone-100 text-emerald-950 px-6">
-        <div className="max-w-7xl mx-auto space-y-16">
+      <section id="planos" className="py-16 md:py-20 bg-stone-100 text-emerald-950 px-6">
+        <div className="max-w-7xl mx-auto space-y-12">
           
           {/* SECTION 1 - TERAPIA GUIADA (ONLINE) */}
-          <div className="scroll-mt-32" id="terapia-online">
+          <div className="scroll-mt-24" id="terapia-online">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12 text-center max-w-3xl mx-auto">
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold md:font-medium leading-[1.2] mb-4">
-                A jornada guiada para recuperar os seus fios e a sua paz
-              </h2>
-              <p className="text-emerald-800/80 text-lg">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold md:font-medium leading-[1.2]">
                 Escolha o formato ideal para o seu momento. Em todos eles, eu vou pegar na sua mão do início ao fim.
-              </p>
+              </h2>
             </motion.div>
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-10 text-center max-w-2xl mx-auto bg-emerald-50/50 p-6 rounded-3xl border border-emerald-100">
               <span className="inline-block text-[10px] uppercase tracking-widest font-bold bg-emerald-900/10 text-emerald-800 px-3 py-1.5 rounded-full border border-emerald-900/20 mb-4">100% Remoto</span>
               <h3 className="font-serif text-2xl md:text-3xl font-bold text-emerald-950 mb-3">
-                Terapia Guiada (Online): escolha o seu plano
+                Terapia capilar online
               </h3>
               <p className="text-emerald-900/80 font-medium">
-                Os 3 planos abaixo são 100% online. Escolha a duração ideal para você: 1, 3 ou 6 meses.
+                Planos de 1, 3 e 6 meses
               </p>
               <span className="block mt-4 text-sm font-bold text-emerald-950/70 md:hidden">↳ Arraste para o lado e veja o que cada plano entrega.</span>
             </motion.div>
@@ -319,7 +380,7 @@ export default function App() {
               <div id="planos-container" className="flex overflow-x-auto pb-8 -mx-6 px-6 snap-x snap-mandatory lg:grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth">
                 
                 {/* PLANO 1 MÊS */}
-                <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="min-w-[85vw] md:min-w-0 snap-center bg-white rounded-[2rem] p-8 lg:p-10 shadow-sm border border-stone-200 flex flex-col hover:shadow-xl transition-shadow duration-300 h-full relative z-10">
+                <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="min-w-[85vw] md:min-w-0 snap-center bg-white rounded-[2rem] p-8 lg:p-10 border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col hover:shadow-[0_20px_50px_rgba(87,103,83,0.25)] transition-shadow duration-300 h-full relative z-10">
                 <div className="mb-6">
                   <h3 className="font-serif text-2xl font-bold text-emerald-950 mb-2">Plano 1 Mês</h3>
                   <p className="text-sm font-medium text-emerald-800/60 h-[40px]">Acompanhamento intensivo e de perto</p>
@@ -345,7 +406,7 @@ export default function App() {
               </motion.div>
 
               {/* PLANO 3 MESES */}
-              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="min-w-[85vw] md:min-w-0 snap-center bg-white rounded-[2rem] p-8 lg:p-10 shadow-sm border border-stone-200 flex flex-col hover:shadow-xl transition-shadow duration-300 h-full relative">
+              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="min-w-[85vw] md:min-w-0 snap-center bg-white rounded-[2rem] p-8 lg:p-10 border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col hover:shadow-[0_20px_50px_rgba(87,103,83,0.25)] transition-shadow duration-300 h-full relative">
                 <div className="mb-6">
                   <h3 className="font-serif text-2xl font-bold text-emerald-950 mb-2">Plano 3 Meses</h3>
                   <p className="text-sm font-medium text-emerald-800/60 h-[40px]">Acompanhamento contínuo</p>
@@ -373,7 +434,7 @@ export default function App() {
               </motion.div>
 
               {/* PLANO 6 MESES */}
-              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }} className="min-w-[85vw] md:min-w-0 snap-center bg-emerald-950 text-white rounded-[2rem] p-8 lg:p-10 shadow-2xl border border-emerald-800 flex flex-col relative h-full transform lg:-translate-y-4">
+              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }} className="min-w-[85vw] md:min-w-0 snap-center bg-emerald-950 text-white rounded-[2rem] p-8 lg:p-10 shadow-[0_20px_60px_rgba(87,103,83,0.4)] border border-emerald-800 flex flex-col relative h-full transform lg:-translate-y-4 hover:shadow-[0_25px_65px_rgba(87,103,83,0.5)] transition-shadow duration-300">
                 <div className="absolute top-0 center right-6 lg:right-auto lg:left-1/2 lg:-translate-x-1/2 -translate-y-1/2">
                   <span className="bg-emerald-500 text-white text-[10px] uppercase font-bold tracking-widest py-1.5 px-4 rounded-full shadow-lg whitespace-nowrap">O Mais Adotado</span>
                 </div>
@@ -422,12 +483,12 @@ export default function App() {
           </motion.div>
           </div>
 
-          <div className="w-full h-px bg-stone-200 my-12" />
+          <div className="w-full h-px bg-stone-200 my-8" />
 
           {/* SECTION 2 - DIAGNÓSTICO PRECISO & SECTION 3 - EXPERIÊNCIA CLÍNICA*/}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* DIAGNÓSTICO */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-sm border border-stone-200 flex flex-col hover:shadow-xl transition-shadow duration-300 h-full relative">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="bg-white rounded-[2rem] p-8 lg:p-10 border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col hover:shadow-[0_20px_50px_rgba(87,103,83,0.25)] transition-shadow duration-300 h-full relative">
               <div className="mb-6">
                 <h3 className="font-serif text-2xl font-bold text-emerald-950 mb-3 block">Diagnóstico Preciso</h3>
                 <span className="inline-block text-[10px] uppercase tracking-widest font-bold bg-stone-100/80 text-emerald-700 px-3 py-1.5 rounded-full border border-stone-200">Online ou Presencial</span>
@@ -456,7 +517,7 @@ export default function App() {
             </motion.div>
 
             {/* PRESENCIAL */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-sm border border-stone-200 flex flex-col hover:shadow-xl transition-shadow duration-300 h-full relative">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="bg-white rounded-[2rem] p-8 lg:p-10 border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col hover:shadow-[0_20px_50px_rgba(87,103,83,0.25)] transition-shadow duration-300 h-full relative">
               <div className="mb-6">
                 <h3 className="font-serif text-2xl font-bold text-emerald-950 mb-3 block">A Experiência Clínica</h3>
                 <span className="inline-block text-[10px] uppercase tracking-widest font-bold bg-stone-100/80 text-emerald-700 px-3 py-1.5 rounded-full border border-stone-200">Presencial</span>
@@ -487,7 +548,7 @@ export default function App() {
       </section>
 
       {/* ABOUT EXPERT SECTION */}
-      <section id="sobre" className="py-32 px-6 bg-emerald-950 text-stone-50 overflow-hidden relative">
+      <section id="sobre" className="py-16 md:py-20 px-6 bg-emerald-950 text-stone-50 overflow-hidden relative">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-800/30 rounded-full blur-[120px] pointer-events-none" />
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-20 relative z-10">
           
@@ -536,7 +597,7 @@ export default function App() {
       </section>
 
       {/* EMOTIONAL FAQ */}
-      <section id="duvidas" className="py-32 px-6 max-w-4xl mx-auto bg-stone-50">
+      <section id="duvidas" className="py-16 md:py-20 px-6 max-w-4xl mx-auto bg-stone-50">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12 md:mb-16">
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold md:font-medium text-emerald-950 mb-4 md:mb-6">
             Dúvidas Frequentes
@@ -576,7 +637,7 @@ export default function App() {
       </section>
 
       {/* EMOTIONAL FOOTER CTA */}
-      <footer id="contato" className="relative py-32 px-6 overflow-hidden bg-emerald-950 text-emerald-50 text-center flex flex-col items-center">
+      <footer id="contato" className="relative py-16 md:py-20 px-6 overflow-hidden bg-emerald-950 text-emerald-50 text-center flex flex-col items-center">
         {/* Soft, gorgeous aesthetic background */}
         <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/90 to-emerald-950" />
@@ -613,7 +674,7 @@ export default function App() {
           </motion.div>
         </div>
         
-        <div className="relative z-10 mt-20 text-emerald-100/60 text-sm font-medium tracking-wide flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center mb-8">
+        <div className="relative z-10 mt-12 text-emerald-100/60 text-sm font-medium tracking-wide flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center mb-8">
           <span className="flex items-center gap-2"><Phone size={16} /> +55 (51) 8062-5399</span>
           <span className="flex items-center gap-2"><MapPin size={16} /> Sapiranga, RS</span>
         </div>
