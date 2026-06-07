@@ -318,7 +318,7 @@ export default function App() {
                 />
               </div>
               <div className="text-center w-full">
-                 <p className="text-sm font-bold text-emerald-900/60 uppercase tracking-wider">Relato recebido por WhatsApp</p>
+                 <p className="text-sm font-bold text-black uppercase tracking-wider">Relato recebido por WhatsApp</p>
               </div>
             </motion.div>
 
@@ -330,25 +330,24 @@ export default function App() {
                
                <div className="relative z-10 flex flex-col h-full justify-center">
                  <div className="flex items-center gap-4 mb-8">
-                   <div className="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
-                     <Quote className="text-emerald-600" size={24} />
+                   <div className="w-14 h-14 bg-stone-100 rounded-full flex items-center justify-center shrink-0">
+                     <Quote className="text-stone-600" size={24} />
                    </div>
                    <div>
-                     <h3 className="font-serif font-bold text-2xl text-emerald-950">Ouça o relato de um paciente</h3>
+                     <h3 className="font-serif font-bold text-2xl text-black">Ouça o relato de um paciente</h3>
                    </div>
                  </div>
                  
-                 <div className="bg-stone-50 rounded-2xl p-6 border border-emerald-100 w-full mb-6">
+                 <div className="bg-stone-50 rounded-2xl p-6 border border-stone-200 w-full mb-6">
                     {/* Native player wrapper styling */}
                     <audio controls className="w-full h-12 outline-none" preload="metadata">
-                      {/* O arquivo real de aúdio será adicionado aqui depois */}
-                      <source src="https://raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/depoimento-audio_2.mp3" type="audio/mpeg" />
+                      <source src="https://raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/ad68c7ba0e50deadd1c9b0176d3f5e296e9db2db/depoimento-audio_2.mp3" type="audio/mpeg" />
                       Seu navegador não suporta o elemento de áudio.
                     </audio>
                  </div>
                  
                  <div className="text-center w-full mt-auto">
-                    <p className="text-sm font-bold text-emerald-900/60 uppercase tracking-wider">Relato recebido em áudio</p>
+                    <p className="text-sm font-bold text-black uppercase tracking-wider">Relato recebido em áudio</p>
                  </div>
                </div>
             </motion.div>
@@ -572,7 +571,7 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
                 className="absolute -bottom-8 -left-2 md:-left-8 bg-white text-[#576753] px-8 py-5 rounded-3xl shadow-2xl flex items-center gap-5 border border-stone-200 z-20"
               >
-                <div className="bg-[#576753]/10 text-[#576753] w-14 h-14 rounded-full flex items-center justify-center font-bold text-2xl">+4</div>
+                <div className="bg-[#576753]/10 text-[#576753] w-14 h-14 rounded-full flex items-center justify-center font-bold text-2xl">11</div>
                 <div className="font-semibold text-[15px] leading-tight text-[#576753]">Anos de<br/>Experiência</div>
               </motion.div>
             </div>
