@@ -364,7 +364,7 @@ export default function App() {
           <div className="scroll-mt-24" id="terapia-online">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12 text-center max-w-3xl mx-auto">
               <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold md:font-medium leading-[1.2]">
-                Escolha o formato ideal para o seu momento. Em todos eles, eu vou pegar na sua mão do início ao fim.
+                Escolha o formato ideal para o seu momento.
               </h2>
             </motion.div>
 
