@@ -24,7 +24,7 @@ const SmartSlider = ({ before, after, label }: { before: string, after: string, 
         onTouchMove={(e) => handleMove(e.touches[0].clientX)}
       >
         {/* After (Bottom) */}
-        <img src={after} alt="Depois" className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" />
+        <img src={after} alt="Depois" className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" loading="lazy" />
         
         {/* Before (Top, clipped) */}
         <img 
@@ -33,6 +33,7 @@ const SmartSlider = ({ before, after, label }: { before: string, after: string, 
           className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none" 
           style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
           referrerPolicy="no-referrer"
+          loading="lazy"
         />
 
         {/* Labels inside */}
@@ -133,7 +134,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-center">
           <motion.div variants={fadeDown} className="flex flex-col items-center md:items-start group cursor-pointer">
             <img 
-              src="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/2.png?raw=true"
+              src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/2.png&output=webp&w=400&q=80"
               alt="Janete Moraes Terapia Capilar"
               className={`h-14 md:h-20 w-auto object-contain transition-all duration-300 ${!scrolled ? 'brightness-0 invert drop-shadow-md' : ''}`}
             />
@@ -155,29 +156,32 @@ export default function App() {
       </motion.header>
 
       {/* HUGE EMOTIONAL HERO SECTION */}
-      <section className="relative min-h-[100svh] flex flex-col justify-start pt-24 md:pt-0 md:justify-center px-6 overflow-hidden">
+      <section className="relative min-h-[auto] md:min-h-[100svh] flex flex-col justify-start pt-24 pb-12 md:pb-0 md:pt-0 md:justify-center px-6 overflow-hidden bg-[#576753]">
         <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[#576753]" />
           {/* Stunning emotional image of a woman loving her hair */}
           <img 
             src="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/Gemini_Generated_Image_y4un0gy4un0gy4un.png?raw=true" 
             alt="Mulher sorrindo e tocando seu cabelo saudável, sentindo-se confiante" 
-            className="w-full h-full object-cover object-[50%_25%] md:object-[50%_45%] transform hover:scale-[1.02] transition-transform duration-[20s]"
+            className="absolute inset-0 w-full h-full object-cover object-[50%_25%] md:object-[50%_45%] transform hover:scale-[1.02] transition-transform duration-[20s]"
+            fetchPriority="high"
+            loading="eager"
             referrerPolicy="no-referrer"
           />
           {/* Deep dark gradient overlay so text is super readable, yet maintains the lush feel */}
           <div className="absolute inset-0 bg-stone-900/60 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-emerald-950/60 to-emerald-950/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-[#576753]/60 to-[#576753]/30" />
         </div>
         
-        <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-12 items-center text-center mt-0 md:mt-12">
+        <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-8 md:gap-12 items-center text-center mt-6 md:mt-12">
           <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-4xl flex flex-col items-center">
-            <motion.div variants={fadeUp} className="inline-flex items-center justify-center mx-auto gap-2 px-5 py-2 rounded-full border border-emerald-200/20 bg-emerald-950/40 backdrop-blur-md mb-8 shadow-2xl">
-              <Sparkles className="text-amber-200" size={14} />
-              <span className="text-xs uppercase tracking-widest font-semibold text-emerald-50">Especialista em Terapia Capilar</span>
+            <motion.div variants={fadeUp} className="inline-flex items-center justify-center mx-auto gap-2 px-5 py-2 rounded-full border border-white/20 bg-black/30 backdrop-blur-md mb-8 shadow-2xl">
+              <Sparkles className="text-white" size={14} />
+              <span className="text-xs uppercase tracking-widest font-semibold text-white">Especialista em Terapia Capilar</span>
             </motion.div>
             
             <motion.h1 variants={fadeUp} className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold md:font-medium leading-[1.2] md:leading-[1.1] text-white mx-auto drop-shadow-xl px-4 md:px-0">
-              Volte a sentir orgulho do seu cabelo e <br className="hidden md:block"/><span className="italic text-emerald-300">paz quando se olhar</span> no espelho.
+              Volte a sentir orgulho do seu cabelo e <br className="hidden md:block"/><span className="italic text-white">paz quando se olhar</span> no espelho.
             </motion.h1>
           </motion.div>
         </div>
@@ -215,9 +219,9 @@ export default function App() {
                         prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]
                       );
                     }}
-                    className={`w-[85vw] md:w-full p-5 lg:p-6 snap-center flex-shrink-0 md:flex-shrink rounded-2xl border flex gap-4 items-center transition-all cursor-pointer select-none ${isChecked ? 'bg-emerald-50 border-emerald-200 shadow-sm' : 'bg-stone-50/80 border-stone-200 hover:bg-stone-100'} h-auto`}
+                    className={`w-[85vw] md:w-full p-5 md:p-6 snap-center flex-shrink-0 rounded-2xl border flex flex-row items-start gap-4 transition-all cursor-pointer select-none ${isChecked ? 'bg-emerald-50 border-emerald-200 shadow-sm' : 'bg-stone-50/80 border-stone-200 hover:bg-stone-100'}`}
                   >
-                    <div className={`shrink-0 w-6 h-6 flex items-center justify-center rounded-md border-2 transition-colors duration-300 relative top-0 ${isChecked ? 'bg-emerald-500 border-emerald-500 text-white' : 'bg-white border-stone-300 shadow-inner'}`}>
+                    <div className={`mt-[2px] min-w-[24px] min-h-[24px] w-6 h-6 flex flex-shrink-0 items-center justify-center rounded-md border-2 transition-colors duration-300 box-border ${isChecked ? 'bg-emerald-500 border-emerald-500 text-white' : 'bg-white border-stone-300 shadow-inner'}`}>
                       <AnimatePresence>
                         {isChecked && (
                           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
@@ -226,7 +230,7 @@ export default function App() {
                         )}
                       </AnimatePresence>
                     </div>
-                    <p className={`leading-snug font-medium text-left break-words whitespace-normal transition-colors duration-300 ${isChecked ? 'text-emerald-950' : 'text-emerald-950/80'} m-0`}>{text}</p>
+                    <p className={`leading-snug font-medium text-left break-words whitespace-normal transition-colors duration-300 flex-1 ${isChecked ? 'text-emerald-950' : 'text-emerald-950/80'} m-0`}>{text}</p>
                   </motion.div>
                 );
               })}
@@ -306,10 +310,11 @@ export default function App() {
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="bg-white p-6 md:p-8 rounded-[2rem] border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col items-center justify-center h-full hover:shadow-[0_20px_50px_rgba(87,103,83,0.2)] transition-shadow duration-300">
               <div className="w-full max-w-sm mx-auto overflow-hidden rounded-2xl border border-stone-100 mb-6 bg-stone-100 flex items-center justify-center">
                 <img 
-                  src="https://github.com/eunicolassilveira-lgtm/Site-Da-Janete/blob/main/WhatsApp%20Image%202026-06-07%20at%2015.40.54.jpeg?raw=true" 
+                  src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-07%20at%2015.40.54.jpeg&output=webp&w=600&q=80" 
                   alt="Relato recebido por WhatsApp" 
                   className="w-full h-auto object-cover max-h-[400px] object-top"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </div>
               <div className="text-center w-full">
@@ -434,30 +439,30 @@ export default function App() {
               </motion.div>
 
               {/* PLANO 6 MESES */}
-              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }} className="min-w-[85vw] md:min-w-0 snap-center bg-emerald-950 text-white rounded-[2rem] p-8 lg:p-10 shadow-[0_20px_60px_rgba(87,103,83,0.4)] border border-emerald-800 flex flex-col relative h-full transform lg:-translate-y-4 hover:shadow-[0_25px_65px_rgba(87,103,83,0.5)] transition-shadow duration-300">
+              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }} className="min-w-[85vw] md:min-w-0 snap-center bg-[#576753] text-white rounded-[2rem] p-8 lg:p-10 shadow-[0_20px_60px_rgba(87,103,83,0.4)] border border-white/20 flex flex-col relative h-full transform lg:-translate-y-4 hover:shadow-[0_25px_65px_rgba(87,103,83,0.5)] transition-shadow duration-300">
                 <div className="absolute top-0 center right-6 lg:right-auto lg:left-1/2 lg:-translate-x-1/2 -translate-y-1/2">
-                  <span className="bg-emerald-500 text-white text-[10px] uppercase font-bold tracking-widest py-1.5 px-4 rounded-full shadow-lg whitespace-nowrap">O Mais Adotado</span>
+                  <span className="bg-white text-[#576753] text-[10px] uppercase font-bold tracking-widest py-1.5 px-4 rounded-full shadow-lg whitespace-nowrap">O Mais Adotado</span>
                 </div>
 
                 <div className="mb-6">
                   <h3 className="font-serif text-2xl font-bold text-white mb-2">Plano 6 Meses</h3>
-                  <p className="text-sm font-medium text-emerald-300 h-[40px]">Resultado completo e duradouro</p>
+                  <p className="text-sm font-medium text-white/90 h-[40px]">Resultado completo e duradouro</p>
                 </div>
                 
                 <div className="flex-grow flex flex-col">
-                  <ul className="space-y-4 mb-8 text-emerald-50 text-sm flex-grow">
-                     <li className="flex gap-3 items-start"><Check className="text-emerald-500 shrink-0 mt-0.5" size={18} /> <span>Tudo do Plano 3 Meses, porém ao longo de 6 meses (4 reuniões no 1º mês e reuniões quinzenais nos meses seguintes)</span></li>
-                     <li className="flex gap-3 items-start"><Check className="text-emerald-500 shrink-0 mt-0.5" size={18} /> <span>Suporte por WhatsApp a qualquer hora e momento</span></li>
-                     <li className="flex gap-3 items-start"><Check className="text-emerald-500 shrink-0 mt-0.5" size={18} /> <span>Acompanhamento prolongado para avaliar a evolução e ajustar o protocolo durante todo o tratamento</span></li>
-                     <li className="flex gap-3 items-start"><Check className="text-emerald-500 shrink-0 mt-0.5" size={18} /> <span><strong>Resultado esperado:</strong> inflamação zerada e fios crescendo muito saudáveis</span></li>
-                     <li className="flex gap-3 items-start"><Check className="text-emerald-500 shrink-0 mt-0.5" size={18} /> <span><strong>Brinde:</strong> Protocolo Nutricional (Nutricionista para prescrição de vitaminas)</span></li>
+                  <ul className="space-y-4 mb-8 text-white text-sm flex-grow">
+                     <li className="flex gap-3 items-start"><Check className="text-white shrink-0 mt-0.5" size={18} /> <span>Tudo do Plano 3 Meses, porém ao longo de 6 meses (4 reuniões no 1º mês e reuniões quinzenais nos meses seguintes)</span></li>
+                     <li className="flex gap-3 items-start"><Check className="text-white shrink-0 mt-0.5" size={18} /> <span>Suporte por WhatsApp a qualquer hora e momento</span></li>
+                     <li className="flex gap-3 items-start"><Check className="text-white shrink-0 mt-0.5" size={18} /> <span>Acompanhamento prolongado para avaliar a evolução e ajustar o protocolo durante todo o tratamento</span></li>
+                     <li className="flex gap-3 items-start"><Check className="text-white shrink-0 mt-0.5" size={18} /> <span><strong>Resultado esperado:</strong> inflamação zerada e fios crescendo muito saudáveis</span></li>
+                     <li className="flex gap-3 items-start"><Check className="text-white shrink-0 mt-0.5" size={18} /> <span><strong>Brinde:</strong> Protocolo Nutricional (Nutricionista para prescrição de vitaminas)</span></li>
                   </ul>
-                  <div className="p-4 bg-emerald-900 border border-emerald-800/80 rounded-xl mb-6">
-                    <p className="text-[12px] text-emerald-100 leading-snug"><strong>Aviso:</strong> Os produtos do tratamento não estão inclusos e são adquiridos à parte.</p>
+                  <div className="p-4 bg-white/10 border border-white/20 rounded-xl mb-6">
+                    <p className="text-[12px] text-white leading-snug"><strong>Aviso:</strong> Os produtos do tratamento não estão inclusos e são adquiridos à parte.</p>
                   </div>
                 </div>
 
-                <div className="mt-auto pt-4 border-t border-emerald-900/50 text-center">
+                <div className="mt-auto pt-4 border-t border-white/20 text-center">
                   <span className="block text-[11px] text-emerald-300 mb-3 uppercase tracking-wider font-bold">Valor sob consulta, varia conforme cada caso</span>
                   <a href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20queria%20consultar%20o%20valor%20do%20Plano%206%20Meses%20da%20Terapia%20Guiada!" target="_blank" rel="noopener noreferrer" className="btn-shimmer block w-full text-center bg-emerald-500 text-white py-4 rounded-xl font-bold hover:bg-emerald-600 transition-colors shadow-lg">
                     Consultar valor
@@ -548,39 +553,40 @@ export default function App() {
       </section>
 
       {/* ABOUT EXPERT SECTION */}
-      <section id="sobre" className="py-16 md:py-20 px-6 bg-emerald-950 text-stone-50 overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-800/30 rounded-full blur-[120px] pointer-events-none" />
+      <section id="sobre" className="py-16 md:py-20 px-6 bg-[#576753] text-stone-50 overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-20 relative z-10">
           
           {/* Image */}
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="w-full md:w-1/2 flex justify-center">
             <div className="relative max-w-[460px] w-full mx-auto">
-              <div className="absolute inset-0 bg-emerald-400/20 translate-x-6 translate-y-6 rounded-[2.5rem] -z-10" />
+              <div className="absolute inset-0 bg-white/10 translate-x-6 translate-y-6 rounded-[2.5rem] -z-10" />
               <img 
-                src="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/WhatsApp%20Image%202026-04-20%20at%2018.26.24.jpeg?raw=true" 
+                src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/WhatsApp%20Image%202026-04-20%20at%2018.26.24.jpeg&output=webp&w=800&q=80" 
                 alt="Janete - Terapeuta Capilar Especializada"
-                className="rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] object-cover w-full h-auto z-10 relative border-[6px] border-emerald-900/40"
+                className="rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] object-cover w-full h-auto z-10 relative border-[6px] border-white/20"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
-                className="absolute -bottom-8 -left-2 md:-left-8 bg-white text-emerald-950 px-8 py-5 rounded-3xl shadow-2xl flex items-center gap-5 border border-stone-200 z-20"
+                className="absolute -bottom-8 -left-2 md:-left-8 bg-white text-[#576753] px-8 py-5 rounded-3xl shadow-2xl flex items-center gap-5 border border-stone-200 z-20"
               >
-                <div className="bg-emerald-100 text-emerald-800 w-14 h-14 rounded-full flex items-center justify-center font-bold text-2xl">+4</div>
-                <div className="font-semibold text-[15px] leading-tight">Anos de<br/>Experiência</div>
+                <div className="bg-[#576753]/10 text-[#576753] w-14 h-14 rounded-full flex items-center justify-center font-bold text-2xl">+4</div>
+                <div className="font-semibold text-[15px] leading-tight text-[#576753]">Anos de<br/>Experiência</div>
               </motion.div>
             </div>
           </motion.div>
 
           {/* Text */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="w-full md:w-1/2 text-center md:text-left">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-900 border border-emerald-800 mb-6 text-xs font-semibold tracking-widest text-emerald-500 uppercase mx-auto md:mx-0">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 mb-6 text-xs font-semibold tracking-widest text-white uppercase mx-auto md:mx-0">
               <Sparkles size={14} /> Quem vai cuidar de você
             </motion.div>
-            <motion.h2 variants={fadeUp} className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold md:font-medium leading-[1.1] mb-6 md:mb-8">
-              Muito prazer, <br className="hidden md:block"/><span className="italic text-emerald-500">sou a Janete.</span>
+            <motion.h2 variants={fadeUp} className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold md:font-medium leading-[1.1] mb-6 md:mb-8 text-white">
+              Muito prazer, <br className="hidden md:block"/><span className="italic text-white">sou a Janete.</span>
             </motion.h2>
-            <motion.div variants={fadeUp} className="space-y-6 text-[1.1rem] text-emerald-100/90 leading-relaxed font-light">
+            <motion.div variants={fadeUp} className="space-y-6 text-[1.1rem] text-white/90 leading-relaxed font-light">
               <p>
                 Sou <strong className="text-white font-medium">Terapeuta Capilar especializada em Tricologia</strong>, a ciência que estuda o cabelo e o couro cabeludo. Mais do que cuidar do seu fio, o meu compromisso é com a paz que você sente ao sorrir na frente do espelho.
               </p>
@@ -637,16 +643,17 @@ export default function App() {
       </section>
 
       {/* EMOTIONAL FOOTER CTA */}
-      <footer id="contato" className="relative py-16 md:py-20 px-6 overflow-hidden bg-emerald-950 text-emerald-50 text-center flex flex-col items-center">
+      <footer id="contato" className="relative py-16 md:py-20 px-6 overflow-hidden bg-[#576753] text-emerald-50 text-center flex flex-col items-center">
         {/* Soft, gorgeous aesthetic background */}
         <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center mix-blend-luminosity" />
-        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/90 to-emerald-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#576753] via-[#576753]/90 to-[#576753]" />
         
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           <img 
-            src="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/2.png?raw=true"
+            src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/2.png&output=webp&w=400&q=80"
             alt="Janete Moraes Terapia Capilar"
             className="h-16 md:h-20 w-auto object-contain mb-8 brightness-0 invert opacity-90"
+            loading="lazy"
           />
           
           <motion.h2 
@@ -658,7 +665,7 @@ export default function App() {
           
           <motion.p 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.1 }}
-            className="text-stone-200 mb-12 text-base md:text-2xl font-light px-4 md:px-0"
+            className="text-white/90 mb-12 text-base md:text-2xl font-light px-4 md:px-0"
           >
             Cada dia preso a essa angústia é um dia a menos de liberdade. Dê o primeiro passo hoje. Eu vou estar com você do início ao fim.
           </motion.p>
@@ -667,19 +674,19 @@ export default function App() {
             <a 
               href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20terapia%20capilar" 
               target="_blank" rel="noopener noreferrer"
-              className="btn-shimmer inline-flex justify-center items-center gap-3 bg-emerald-500 text-white px-8 py-5 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl hover:bg-emerald-600 hover:scale-105 transition-all shadow-[0_0_50px_rgba(87,103,83,0.3)] w-full sm:w-auto mt-4"
+              className="btn-shimmer inline-flex justify-center items-center gap-3 bg-[#455242] text-white border border-white/20 px-8 py-5 md:px-12 md:py-6 rounded-full font-bold text-base md:text-xl hover:bg-[#364134] hover:scale-105 transition-all shadow-xl w-full sm:w-auto mt-4"
             >
               Mandar mensagem no WhatsApp <Phone size={20}/>
             </a>
           </motion.div>
         </div>
         
-        <div className="relative z-10 mt-12 text-emerald-100/60 text-sm font-medium tracking-wide flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center mb-8">
+        <div className="relative z-10 mt-12 text-white/70 text-sm font-medium tracking-wide flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center mb-8">
           <span className="flex items-center gap-2"><Phone size={16} /> +55 (51) 8062-5399</span>
           <span className="flex items-center gap-2"><MapPin size={16} /> Sapiranga, RS</span>
         </div>
 
-        <div className="relative z-10 text-emerald-600/60 text-[13px] font-medium tracking-wide flex flex-col gap-2 items-center">
+        <div className="relative z-10 text-white/50 text-[13px] font-medium tracking-wide flex flex-col gap-2 items-center">
           <span>© {new Date().getFullYear()} Janete Terapia Capilar. Devolvendo sorrisos.</span>
           <span>Desenvolvido por Arkadigital</span>
         </div>
