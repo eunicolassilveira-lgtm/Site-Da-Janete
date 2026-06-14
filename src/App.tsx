@@ -241,7 +241,7 @@ export default function App() {
           <div className="absolute inset-0 bg-[#576753]" />
           {/* Stunning emotional image of a woman loving her hair */}
           <img 
-            src="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/Gemini_Generated_Image_y4un0gy4un0gy4un.png?raw=true" 
+            src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/Gemini_Generated_Image_y4un0gy4un0gy4un.png&output=webp&w=1200&q=80" 
             alt="Mulher sorrindo e tocando seu cabelo saudável, sentindo-se confiante" 
             className="absolute inset-0 w-full h-full object-cover object-[50%_25%] md:object-[50%_45%] transform hover:scale-[1.02] transition-transform duration-[20s]"
             fetchPriority="high"
@@ -356,15 +356,15 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
              <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
                <SmartSlider 
-                 before="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/calvo%20antes%201.jpeg?raw=true"
-                 after="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/calvo%20depois%201.jpeg?raw=true"
+                 before="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/calvo%20antes%201.jpeg&output=webp&w=600&q=80"
+                 after="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/calvo%20depois%201.jpeg&output=webp&w=600&q=80"
                  label="Repovoamento expressivo alcançado em 6 meses de tratamento."
                />
              </motion.div>
              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
                <SmartSlider 
-                 before="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/calvo%20antes%202.jpeg?raw=true" 
-                 after="https://github.com/eunicolassilveira-lgtm/site-cia-do-tapete/blob/main/calvo%20depois%202.jpeg?raw=true"
+                 before="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/calvo%20antes%202.jpeg&output=webp&w=600&q=80" 
+                 after="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/calvo%20depois%202.jpeg&output=webp&w=600&q=80"
                  label="Caso diagnosticado como queda irreversível. Repovoamento recuperado em apenas 6 meses."
                />
              </motion.div>
