@@ -86,7 +86,7 @@ const FeedbackCarousel = () => {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
-      <div className="relative w-full overflow-hidden rounded-2xl mb-6 bg-stone-100 flex items-center justify-center">
+      <div className="relative w-full h-[500px] md:h-[650px] overflow-hidden rounded-2xl mb-6 bg-stone-100 flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.img
             key={current}
@@ -96,7 +96,7 @@ const FeedbackCarousel = () => {
             transition={{ duration: 0.3 }}
             src={feedbackImages[current]}
             alt={`Feedback ${current + 1}`}
-            className="w-full h-auto object-contain"
+            className="absolute inset-0 w-full h-full object-contain"
             referrerPolicy="no-referrer"
             loading="lazy"
           />
@@ -594,7 +594,7 @@ export default function App() {
               <div className="absolute inset-0 bg-white/10 translate-x-6 translate-y-6 rounded-[2.5rem] -z-10" />
               <img 
                 src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/WhatsApp%20Image%202026-04-20%20at%2018.26.24.jpeg&output=webp&w=800&q=80" 
-                alt="Janete - Terapeuta Capilar Especializada"
+                alt="Janete Terapeuta Capilar Especializada"
                 className="rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] object-cover w-full h-auto z-10 relative border-[6px] border-white/20"
                 referrerPolicy="no-referrer"
                 loading="lazy"
