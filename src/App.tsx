@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Phone, ChevronDown, ChevronRight, Droplet, Wind, EyeOff, HeartCrack, ArrowRight, ArrowLeftRight, Sparkles, Heart, Search, CheckCircle, Check, MapPin, MessageCircle, Play, Pause, Quote } from 'lucide-react';
+import { Phone, ChevronDown, ChevronRight, ChevronLeft, Droplet, Wind, EyeOff, HeartCrack, ArrowRight, ArrowLeftRight, Sparkles, Heart, Search, CheckCircle, Check, MapPin, MessageCircle, Play, Pause, Quote } from 'lucide-react';
 
 /* --- SMART IMAGE SLIDER COMPONENT --- */
 const SmartSlider = ({ before, after, label }: { before: string, after: string, label: string }) => {
@@ -51,6 +51,86 @@ const SmartSlider = ({ before, after, label }: { before: string, after: string, 
         </div>
       </div>
       <p className="text-center font-medium text-emerald-900/80 text-sm md:text-base px-4">{label}</p>
+    </div>
+  );
+};
+
+/* --- FEEDBACK CAROUSEL COMPONENT --- */
+const feedbackImages = [
+  "https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/ad68c7ba0e50deadd1c9b0176d3f5e296e9db2db/WhatsApp%20Image%202026-06-07%20at%2015.40.54.jpeg&output=webp&w=800&q=80",
+  "https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-14%20at%2018.21.59%20(1).jpeg&output=webp&w=800&q=80",
+  "https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-14%20at%2018.21.59.jpeg&output=webp&w=800&q=80",
+  "https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-14%20at%2018.22.31.jpeg&output=webp&w=800&q=80"
+];
+
+const FeedbackCarousel = () => {
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % feedbackImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % feedbackImages.length);
+  const prevSlide = () => setCurrent((prev) => (prev - 1 + feedbackImages.length) % feedbackImages.length);
+
+  return (
+    <div 
+      className="relative w-full max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-[2rem] border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] hover:shadow-[0_20px_50px_rgba(87,103,83,0.2)] transition-shadow duration-300 flex flex-col items-center"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+    >
+      <div className="relative w-full overflow-hidden rounded-2xl mb-6 bg-stone-100 flex items-center justify-center">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={current}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            src={feedbackImages[current]}
+            alt={`Feedback ${current + 1}`}
+            className="w-full h-auto object-contain"
+            referrerPolicy="no-referrer"
+            loading="lazy"
+          />
+        </AnimatePresence>
+        
+        {/* Navigation Arrows */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-emerald-900 p-2 md:p-3 rounded-full shadow-lg backdrop-blur-sm transition-transform hover:scale-110 z-10"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button 
+          onClick={nextSlide}
+          className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-emerald-900 p-2 md:p-3 rounded-full shadow-lg backdrop-blur-sm transition-transform hover:scale-110 z-10"
+        >
+          <ChevronRight size={24} />
+        </button>
+      </div>
+
+      {/* Pagination Dots */}
+      <div className="flex justify-center gap-2 mb-6">
+        {feedbackImages.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === current ? 'bg-emerald-600 w-6' : 'bg-emerald-200 hover:bg-emerald-400'}`}
+          />
+        ))}
+      </div>
+
+      <div className="text-center w-full">
+         <p className="text-sm font-bold text-black uppercase tracking-wider">Relato recebido por WhatsApp</p>
+      </div>
     </div>
   );
 };
@@ -296,63 +376,15 @@ export default function App() {
       <section className="py-16 md:py-20 px-6 bg-stone-50">
         <div className="max-w-6xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold md:font-medium text-emerald-950 mb-6 leading-[1.2]">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold md:font-medium text-black mb-6 leading-[1.2]">
               Histórias de quem confiou em mim
             </h2>
-            <p className="text-lg text-emerald-800/80">
+            <p className="text-lg text-black">
               Veja e ouça o relato de quem viveu essa transformação.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
-            
-            {/* WHATSAPP PRINT feedback */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="bg-white p-6 md:p-8 rounded-[2rem] border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col items-center justify-center h-full hover:shadow-[0_20px_50px_rgba(87,103,83,0.2)] transition-shadow duration-300">
-              <div className="w-full max-w-sm mx-auto overflow-hidden rounded-2xl border border-stone-100 mb-6 bg-stone-100 flex items-center justify-center">
-                <img 
-                  src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-07%20at%2015.40.54.jpeg&output=webp&w=600&q=80" 
-                  alt="Relato recebido por WhatsApp" 
-                  className="w-full h-auto object-cover max-h-[400px] object-top"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                />
-              </div>
-              <div className="text-center w-full">
-                 <p className="text-sm font-bold text-black uppercase tracking-wider">Relato recebido por WhatsApp</p>
-              </div>
-            </motion.div>
-
-            {/* AUDIO feedback */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="bg-white p-6 md:p-8 rounded-[2rem] border border-emerald-900/10 shadow-[0_15px_40px_rgba(87,103,83,0.12)] flex flex-col justify-center h-full hover:shadow-[0_20px_50px_rgba(87,103,83,0.2)] transition-shadow duration-300 relative overflow-hidden">
-               <div className="absolute top-0 right-0 p-8 opacity-5">
-                  <Quote size={120} />
-               </div>
-               
-               <div className="relative z-10 flex flex-col h-full justify-center">
-                 <div className="flex items-center gap-4 mb-8">
-                   <div className="w-14 h-14 bg-stone-100 rounded-full flex items-center justify-center shrink-0">
-                     <Quote className="text-stone-600" size={24} />
-                   </div>
-                   <div>
-                     <h3 className="font-serif font-bold text-2xl text-black">Ouça o relato de um paciente</h3>
-                   </div>
-                 </div>
-                 
-                 <div className="bg-stone-50 rounded-2xl p-6 border border-stone-200 w-full mb-6">
-                    {/* Native player wrapper styling */}
-                    <audio controls className="w-full h-12 outline-none" preload="metadata">
-                      <source src="https://raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/ad68c7ba0e50deadd1c9b0176d3f5e296e9db2db/depoimento-audio_2.mp3" type="audio/mpeg" />
-                      Seu navegador não suporta o elemento de áudio.
-                    </audio>
-                 </div>
-                 
-                 <div className="text-center w-full mt-auto">
-                    <p className="text-sm font-bold text-black uppercase tracking-wider">Relato recebido em áudio</p>
-                 </div>
-               </div>
-            </motion.div>
-
-          </div>
+          <FeedbackCarousel />
         </div>
       </section>
 
