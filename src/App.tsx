@@ -24,13 +24,13 @@ const SmartSlider = ({ before, after, label }: { before: string, after: string, 
         onTouchMove={(e) => handleMove(e.touches[0].clientX)}
       >
         {/* After (Bottom) */}
-        <img src={after} alt="Depois" className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none" referrerPolicy="no-referrer" loading="lazy" />
+        <img src={after} alt="Depois" className="absolute inset-0 w-full h-full object-cover object-center select-none pointer-events-none" referrerPolicy="no-referrer" loading="lazy" />
         
         {/* Before (Top, clipped) */}
         <img 
           src={before} 
           alt="Antes" 
-          className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none" 
+          className="absolute inset-0 w-full h-full object-cover object-center select-none pointer-events-none" 
           style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
           referrerPolicy="no-referrer"
           loading="lazy"
@@ -236,21 +236,21 @@ export default function App() {
       </motion.header>
 
       {/* HUGE EMOTIONAL HERO SECTION */}
-      <section className="relative min-h-[auto] md:min-h-[100svh] flex flex-col justify-start pt-24 pb-12 md:pb-0 md:pt-0 md:justify-center px-6 overflow-hidden bg-[#576753]">
+      <section className="relative min-h-[75svh] md:min-h-[100svh] flex flex-col justify-start pt-32 pb-16 md:pb-0 md:pt-0 md:justify-center px-6 overflow-hidden bg-[#576753]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[#576753]" />
           {/* Stunning emotional image of a woman loving her hair */}
           <img 
-            src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/Gemini_Generated_Image_y4un0gy4un0gy4un.png&output=webp&w=1200&q=80" 
-            alt="Mulher sorrindo e tocando seu cabelo saudável, sentindo-se confiante" 
-            className="absolute inset-0 w-full h-full object-cover object-[50%_25%] md:object-[50%_45%] transform hover:scale-[1.02] transition-transform duration-[20s]"
+            src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/janete-hero-sem-logo.jpg&output=webp&w=1080&q=80" 
+            alt="Janete especialista em terapia capilar" 
+            className="absolute inset-0 w-full h-full object-cover object-center transform hover:scale-[1.02] transition-transform duration-[20s]"
             fetchPriority="high"
             loading="eager"
             referrerPolicy="no-referrer"
           />
           {/* Deep dark gradient overlay so text is super readable, yet maintains the lush feel */}
-          <div className="absolute inset-0 bg-stone-900/60 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-[#576753]/60 to-[#576753]/30" />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-transparent to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-8 md:gap-12 items-center text-center mt-6 md:mt-12">
@@ -356,15 +356,15 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
              <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
                <SmartSlider 
-                 before="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/calvo%20antes%201.jpeg&output=webp&w=600&q=80"
-                 after="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/calvo%20depois%201.jpeg&output=webp&w=600&q=80"
+                 before="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-15%20at%2020.32.46.jpeg&output=webp&w=800&q=80"
+                 after="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-15%20at%2020.32.47.jpeg&output=webp&w=800&q=80"
                  label="Repovoamento expressivo alcançado em 6 meses de tratamento."
                />
              </motion.div>
              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
                <SmartSlider 
-                 before="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/calvo%20antes%202.jpeg&output=webp&w=600&q=80" 
-                 after="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/calvo%20depois%202.jpeg&output=webp&w=600&q=80"
+                 before="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-15%20at%2020.32.48.jpeg&output=webp&w=800&q=80" 
+                 after="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-15%20at%2020.32.48%20(1).jpeg&output=webp&w=800&q=80"
                  label="Caso diagnosticado como queda irreversível. Repovoamento recuperado em apenas 6 meses."
                />
              </motion.div>
