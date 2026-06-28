@@ -57,10 +57,9 @@ const SmartSlider = ({ before, after, label }: { before: string, after: string, 
 
 /* --- FEEDBACK CAROUSEL COMPONENT --- */
 const feedbackImages = [
-  "https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/ad68c7ba0e50deadd1c9b0176d3f5e296e9db2db/WhatsApp%20Image%202026-06-07%20at%2015.40.54.jpeg&output=webp&w=800&q=80",
-  "https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-14%20at%2018.21.59%20(1).jpeg&output=webp&w=800&q=80",
-  "https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-14%20at%2018.21.59.jpeg&output=webp&w=800&q=80",
-  "https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-14%20at%2018.22.31.jpeg&output=webp&w=800&q=80"
+  "https://i.ibb.co/ccmzd3zT/Feedback-1.jpg",
+  "https://i.ibb.co/TBmBydj3/Feedback-2.jpg",
+  "https://i.ibb.co/7JTL6wxH/feedback-3.jpg"
 ];
 
 const FeedbackCarousel = () => {
@@ -214,7 +213,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-center">
           <motion.div variants={fadeDown} className="flex flex-col items-center md:items-start group cursor-pointer">
             <img 
-              src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/2.png&output=webp&w=400&q=80"
+              src="https://i.ibb.co/hxTwnY17/LOGOMARCA-JANETE-MORAES.png"
               alt="Janete Moraes Terapia Capilar"
               className={`h-14 md:h-20 w-auto object-contain transition-all duration-300 ${!scrolled ? 'brightness-0 invert drop-shadow-md' : ''}`}
             />
@@ -241,7 +240,7 @@ export default function App() {
           <div className="absolute inset-0 bg-[#576753]" />
           {/* Stunning emotional image of a woman loving her hair */}
           <img 
-            src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/janete-hero-sem-logo.jpg&output=webp&w=1080&q=80" 
+            src="https://i.ibb.co/DPy4ZdSX/janete-hero-sem-logo.jpg" 
             alt="Janete especialista em terapia capilar" 
             className="absolute inset-0 w-full h-full object-cover object-center transform hover:scale-[1.02] transition-transform duration-[20s]"
             fetchPriority="high"
@@ -356,15 +355,15 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
              <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
                <SmartSlider 
-                 before="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-15%20at%2020.32.46.jpeg&output=webp&w=800&q=80"
-                 after="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-15%20at%2020.32.47.jpeg&output=webp&w=800&q=80"
+                 before="https://i.ibb.co/qLgxnDqm/janete-foto-1.jpg"
+                 after="https://i.ibb.co/6cy8b3vF/janete-foto-2.jpg"
                  label="Repovoamento expressivo alcançado em 6 meses de tratamento."
                />
              </motion.div>
              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
                <SmartSlider 
-                 before="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-15%20at%2020.32.48.jpeg&output=webp&w=800&q=80" 
-                 after="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/Site-Da-Janete/main/WhatsApp%20Image%202026-06-15%20at%2020.32.48%20(1).jpeg&output=webp&w=800&q=80"
+                 before="https://i.ibb.co/Zjs34bg/janete-foto-3.jpg" 
+                 after="https://i.ibb.co/HD86XjBV/janete-foto-4.jpg"
                  label="Caso diagnosticado como queda irreversível. Repovoamento recuperado em apenas 6 meses."
                />
              </motion.div>
@@ -593,7 +592,7 @@ export default function App() {
             <div className="relative max-w-[460px] w-full mx-auto">
               <div className="absolute inset-0 bg-white/10 translate-x-6 translate-y-6 rounded-[2.5rem] -z-10" />
               <img 
-                src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/WhatsApp%20Image%202026-04-20%20at%2018.26.24.jpeg&output=webp&w=800&q=80" 
+                src="https://i.ibb.co/BHQZNxng/Foto-da-janete.jpg" 
                 alt="Janete Terapeuta Capilar Especializada"
                 className="rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] object-cover w-full h-auto z-10 relative border-[6px] border-white/20"
                 referrerPolicy="no-referrer"
@@ -681,7 +680,7 @@ export default function App() {
         
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           <img 
-            src="https://wsrv.nl/?url=raw.githubusercontent.com/eunicolassilveira-lgtm/site-cia-do-tapete/main/2.png&output=webp&w=400&q=80"
+            src="https://i.ibb.co/hxTwnY17/LOGOMARCA-JANETE-MORAES.png"
             alt="Janete Moraes Terapia Capilar"
             className="h-16 md:h-20 w-auto object-contain mb-8 brightness-0 invert opacity-90"
             loading="lazy"
