@@ -1,0 +1,33 @@
+{
+ "semente": {
+  "cx": 780,
+  "base": 712
+ },
+ "foco": {
+  "dores": 930,
+  "fases": 1371,
+  "metodo": 1985,
+  "casos": 2720,
+  "planos": 3160,
+  "diagnostico": 3480,
+  "relatos": 3780,
+  "final": 4140
+ },
+ "marcos": [
+  {
+   "n": 1,
+   "nome": "1º mês",
+   "y": 1085
+  },
+  {
+   "n": 2,
+   "nome": "3º mês",
+   "y": 1371
+  },
+  {
+   "n": 3,
+   "nome": "6º mês",
+   "y": 1657
+  }
+ ]
+}

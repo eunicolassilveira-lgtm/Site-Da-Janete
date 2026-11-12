@@ -1,14 +1,423 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="is-loading">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="https://i.ibb.co/hxTwnY17/LOGOMARCA-JANETE-MORAES.png" />
-    <title>Janete Moraes | Terapia Capilar & Autoestima</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Janete Moraes | Terapia Capilar e Tricologia em Sapiranga</title>
+    <meta name="description" content="Terapeuta capilar especializada em tricologia. Diagnóstico da causa da queda e tratamento online ou presencial em Sapiranga, RS. Planos de 1, 3 e 6 meses." />
+    <meta name="theme-color" content="#040506" />
+    <meta property="og:title" content="Janete Moraes | Terapia Capilar" />
+    <meta property="og:description" content="Tudo começa na raiz. Diagnóstico da causa da queda e tratamento online ou presencial." />
+    <meta property="og:image" content="/img/hero-1080.webp" />
+    <meta property="og:locale" content="pt_BR" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/img/fundo-pele.webp" as="image" />
+    <link rel="preload" href="/img/pele-0.webp" as="image" fetchpriority="high" />
+    <link rel="preload" href="/img/logo-mark.webp" as="image" crossorigin />
+    <link rel="preload" href="/img/logo-word.webp" as="image" crossorigin />
+
+    <script>
+      // intro do logo: só com JS e movimento liberado; o failsafe tira a intro se o JS nunca subir
+      (function () {
+        var d = document.documentElement;
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('logo-intro-on');
+        setTimeout(function () {
+          if (!window.__logoIntroBooted) { d.classList.remove('logo-intro-on', 'is-loading'); d.classList.add('logo-intro-done'); }
+        }, 3500);
+      })();
+    </script>
+    <style>
+      /* CSS crítico da intro: o primeiro quadro já sai certo. O logo da intro é o mesmo conjunto (em) da marca
+         da nav, então o voo até ela é só escala + translação. */
+      .logo-intro { display: none; }
+      .logo-intro-on .logo-intro { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: #040506; }
+      .brand { display: inline-flex; flex-direction: column; align-items: center; gap: 0.26em; width: 3.67em; color: #fff; line-height: 0; }
+      .brand__mark, .brand__word { display: block; width: 100%; }
+      .brand__mark i, .brand__word i { display: block; width: 100%; background: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+      .brand__mark i { aspect-ratio: 367 / 166; --m: url(/img/logo-mark.webp); }
+      .brand__word i { aspect-ratio: 367 / 74; --m: url(/img/logo-word.webp); }
+      .logo-intro__logo { font-size: clamp(56px, 9vw, 104px); transform-origin: 0 0; }
+      .logo-intro__logo .brand__mark { opacity: 0; }
+      .logo-intro__logo .brand__word {
+        --reveal: -20%;
+        -webkit-mask-image: linear-gradient(90deg, #000 calc(var(--reveal) - 18%), transparent var(--reveal));
+        mask-image: linear-gradient(90deg, #000 calc(var(--reveal) - 18%), transparent var(--reveal));
+      }
+      .logo-intro-on:not(.logo-intro-done) .nav__brand { visibility: hidden; }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="logo-intro" data-logo-intro aria-hidden="true">
+      <div class="brand logo-intro__logo" data-logo-intro-logo>
+        <span class="brand__mark" data-logo-intro-mark><i></i></span>
+        <span class="brand__word" data-logo-intro-word><i></i></span>
+      </div>
+    </div>
+
+    <!-- o mundo: um corte da cabeça que desce pelo fio de cabelo até a raiz, fixo atrás do conteúdo -->
+    <div class="world" aria-hidden="true">
+      <div class="world__layer world__fundo"><img src="/img/fundo-pele.webp" alt="" /></div>
+      <div class="world__layer world__strip"><div class="strip" data-strip></div></div>
+      <canvas class="world__layer world__fios" data-cabelos></canvas>
+      <canvas class="world__layer world__polen" data-polen></canvas>
+      <div class="world__layer world__decor"></div>
+      <div class="world__layer world__shade"></div>
+      <div class="world__layer world__marks"></div>
+      <div class="world__veil" data-veil></div>
+    </div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="topo" data-scene="hero">
+        <header class="nav">
+          <a class="nav__brand brand" href="#topo" aria-label="Janete Moraes, terapeuta capilar. Início">
+            <span class="brand__mark"><i></i></span>
+            <span class="brand__word"><i></i></span>
+          </a>
+          <nav class="nav__links" aria-label="Principal">
+            <a href="#casos">Casos</a>
+            <a href="#planos">Planos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#duvidas">Dúvidas</a>
+          </nav>
+          <a class="btn btn--white btn--sm nav__cta" href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20terapia%20capilar" target="_blank" rel="noopener noreferrer">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/></svg>
+            Agendar
+          </a>
+        </header>
+
+        <h1 class="hero__title">
+          <span class="ln"><span class="ln__in">Tudo começa</span></span>
+          <span class="ln"><span class="ln__in">na <span class="pill" data-pill><span class="pill__glass"></span><svg class="pill__edge" data-pill-edge aria-hidden="true"><path /><path /></svg><span class="pill__glow" aria-hidden="true">raiz</span><span class="pill__txt">raiz</span><i class="pill__line" aria-hidden="true"></i></span>.</span></span>
+        </h1>
+        <div class="hero__front" data-front aria-hidden="true"></div>
+
+        <div class="hero__cta">
+          <p class="hero__sub">Terapia capilar que investiga a causa da queda antes de tratar.</p>
+          <div class="hero__btns">
+            <a class="btn btn--white" href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20terapia%20capilar" target="_blank" rel="noopener noreferrer">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/></svg>
+              Falar com a Janete
+            </a>
+            <a class="btn btn--glass" href="#casos">Ver os casos</a>
+          </div>
+          <p class="hero__lot">Online para todo o Brasil · Presencial em Sapiranga, RS</p>
+        </div>
+        <span class="hero__corner hero__corner--l">Terapia capilar e tricologia</span>
+        <span class="hero__corner hero__corner--r">11 anos de consultório</span>
+      </section>
+
+      <!-- DORES -->
+      <section class="dores wrap" id="dores" data-scene="dores">
+        <div class="dores__head scrim">
+          <p class="eyebrow" data-reveal>Se isso é o seu dia a dia</p>
+          <h2 class="h2" data-lines>A queda não leva<br />só cabelo.</h2>
+          <p class="lede" data-reveal>Leva a paz no banho, nas fotos e num dia de vento. Marque o que você reconhece.</p>
+        </div>
+        <div class="dores__list" data-dores>
+          <button type="button" class="dor glass" data-reveal aria-pressed="false"><i class="dor__box"></i><span>Angústia no banho ao ver quantos fios vão embora pelo ralo.</span></button>
+          <button type="button" class="dor glass" data-reveal aria-pressed="false"><i class="dor__box"></i><span>Fugir de fotos e de luz forte para não mostrar as falhas e as entradas.</span></button>
+          <button type="button" class="dor glass" data-reveal aria-pressed="false"><i class="dor__box"></i><span>Medo do vento despentear e revelar o afinamento.</span></button>
+          <button type="button" class="dor glass" data-reveal aria-pressed="false"><i class="dor__box"></i><span>Muito dinheiro gasto em produto "milagroso" e nenhum resultado.</span></button>
+          <div class="dores__cta" data-dores-cta hidden>
+            <p><b data-dores-n>1</b> de 4. Dá para tratar, e começa pela causa.</p>
+            <a class="btn btn--white" href="#planos">Quero tratar a causa</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASES (as notas do Breu): o fio acende cada fase quando passa pelo marco -->
+      <section class="fases wrap" id="fases" data-scene="fases">
+        <div class="fases__head scrim">
+          <p class="eyebrow" data-reveal>Como o tratamento evolui</p>
+          <h2 class="h2" data-lines>Do primeiro mês<br />ao sexto.</h2>
+          <p class="lede" data-reveal>A queda não para de um dia para o outro. Primeiro ela estabiliza, depois nasce o fio novo e só então o volume volta.</p>
+        </div>
+        <div class="fases__list">
+          <article class="fase glass" data-nota="1" data-reveal>
+            <header><span class="fase__tag"><i></i>Estabilizar</span><span class="fase__t">1º mês</span></header>
+            <h3>A queda diminui e a inflamação acalma.</h3>
+            <p>A oleosidade fica sob controle. Muitos pacientes já se sentem mais calmos e no controle quando notam a queda estabilizando.</p>
+          </article>
+          <article class="fase glass" data-nota="2" data-reveal>
+            <header><span class="fase__tag"><i></i>Fios novos</span><span class="fase__t">3º mês</span></header>
+            <h3>A queda estanca e nascem fios limpos.</h3>
+            <p>O protocolo é acompanhado e ajustado conforme o seu couro cabeludo responde.</p>
+          </article>
+          <article class="fase glass" data-nota="3" data-reveal>
+            <header><span class="fase__tag"><i></i>Repovoar</span><span class="fase__t">6º mês</span></header>
+            <h3>Inflamação zerada e fios crescendo fortes.</h3>
+            <p>É entre o 3º e o 6º mês que o repovoamento aparece no espelho e nas fotos.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- MÉTODO (o ateliê do Breu): o meio fica livre para o folículo do cenário -->
+      <section class="metodo wrap" id="metodo" data-scene="metodo">
+        <div class="metodo__head scrim">
+          <p class="eyebrow" data-reveal>O método</p>
+          <h2 class="h2" data-lines>Investigar antes<br />de tratar.</h2>
+          <p class="lede" data-reveal>Produto de prateleira trata o sintoma. Aqui o tratamento começa pelo que o seu corpo está pedindo, seja hormonal, nutricional ou emocional.</p>
+        </div>
+        <figure class="estrutura" data-estrutura aria-label="Estrutura do fio de cabelo: cutícula, córtex e medula">
+          <svg viewBox="0 0 560 330" role="img" aria-hidden="true" overflow="visible">
+            <defs>
+              <linearGradient id="e-haste" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a5038"/><stop offset="0.35" stop-color="#4a2c1e"/><stop offset="1" stop-color="#1e110b"/></linearGradient>
+              <linearGradient id="e-cortex" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2cf7a"/><stop offset="0.5" stop-color="#c8922e"/><stop offset="1" stop-color="#7a5212"/></linearGradient>
+              <radialGradient id="e-face" cx="0.45" cy="0.45" r="0.6"><stop offset="0" stop-color="#f6d888"/><stop offset="1" stop-color="#b07820"/></radialGradient>
+              <linearGradient id="e-medula" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb070"/><stop offset="1" stop-color="#c0401c"/></linearGradient>
+              <filter id="e-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+            </defs>
+            <g transform="rotate(-14 300 180)">
+              <!-- cutícula: o tubo de fora, com as escamas -->
+              <g class="estrutura__cuticula">
+                <path d="M200,118 L560,118 L560,242 L200,242 Z" fill="url(#e-haste)"/>
+                <ellipse cx="560" cy="180" rx="22" ry="62" fill="#3a2216"/>
+                <g fill="none" stroke="#c89478" stroke-opacity="0.35" stroke-width="1.6">
+                  <path d="M236,120 q-14,60 0,120"/><path d="M270,120 q-14,60 0,120"/><path d="M304,120 q-14,60 0,120"/><path d="M338,120 q-14,60 0,120"/><path d="M372,120 q-14,60 0,120"/><path d="M406,120 q-14,60 0,120"/><path d="M440,120 q-14,60 0,120"/><path d="M474,120 q-14,60 0,120"/><path d="M508,120 q-14,60 0,120"/>
+                </g>
+                <path d="M200,126 L556,126" stroke="#e8c0a4" stroke-opacity="0.45" stroke-width="3"/>
+                <ellipse cx="200" cy="180" rx="22" ry="62" fill="#5a3626" stroke="#2a160c" stroke-width="2"/>
+              </g>
+              <!-- córtex: as fibras douradas, mais para fora -->
+              <g class="estrutura__cortex">
+                <path d="M110,130 L200,130 L200,230 L110,230 Z" fill="url(#e-cortex)"/>
+                <g stroke="#7a5212" stroke-opacity="0.55" stroke-width="1.4"><path d="M110,148 L200,148"/><path d="M110,164 L200,164"/><path d="M110,180 L200,180"/><path d="M110,196 L200,196"/><path d="M110,212 L200,212"/></g>
+                <ellipse cx="110" cy="180" rx="18" ry="50" fill="url(#e-face)" stroke="#7a5212" stroke-width="2"/>
+                <g fill="none" stroke="#8a5e16" stroke-opacity="0.7" stroke-width="1.2"><path d="M100,150 l10,6 l8,-4"/><path d="M98,168 l12,4 l9,-6"/><path d="M99,194 l11,-3 l9,7"/><path d="M101,210 l9,-5 l8,5"/><path d="M104,140 l6,8"/><path d="M104,222 l7,-7"/></g>
+              </g>
+              <!-- medula: o centro -->
+              <g class="estrutura__medula">
+                <ellipse cx="70" cy="180" rx="34" ry="20" fill="#ff7a3a" opacity="0.5" filter="url(#e-glow)"/>
+                <path d="M54,166 L110,166 L110,194 L54,194 Z" fill="url(#e-medula)"/>
+                <ellipse cx="54" cy="180" rx="7" ry="14" fill="#ffa060" stroke="#a03014" stroke-width="1.5"/>
+              </g>
+            </g>
+            <!-- legendas -->
+            <g class="estrutura__rot" font-family="Satoshi, sans-serif" font-size="15" fill="#eceee4">
+              <g class="e-rot"><circle cx="90" cy="232" r="4" fill="#d8f1ec"/><path d="M90,232 L90,300 L116,300" stroke="#d8f1ec" stroke-opacity="0.6" fill="none"/><text x="124" y="305">Medula</text></g>
+              <g class="e-rot"><circle cx="163" cy="210" r="4" fill="#d8f1ec"/><path d="M163,210 L163,64 L189,64" stroke="#d8f1ec" stroke-opacity="0.6" fill="none"/><text x="197" y="69">Córtex</text></g>
+              <g class="e-rot"><circle cx="405" cy="104" r="4" fill="#d8f1ec"/><path d="M405,104 L405,36 L431,36" stroke="#d8f1ec" stroke-opacity="0.6" fill="none"/><text x="439" y="41">Cutícula</text></g>
+            </g>
+          </svg>
+          <figcaption>A cutícula protege, o córtex dá força e cor, a medula fica no centro. Quando a raiz adoece, o fio já nasce fraco.</figcaption>
+        </figure>
+        <ol class="metodo__steps">
+          <li class="glass" data-reveal><span class="num">01</span><h3>Diagnóstico</h3><p>Um questionário investigativo mapeia a causa da queda.</p></li>
+          <li class="glass" data-reveal><span class="num">02</span><h3>Protocolo</h3><p>Cronograma de produtos para o seu caso e vitaminas prescritas por nutricionista.</p></li>
+          <li class="glass" data-reveal><span class="num">03</span><h3>Acompanhamento</h3><p>Reuniões semanais no 1º mês, depois a cada 15 dias, e suporte pelo WhatsApp.</p></li>
+          <li class="glass" data-reveal><span class="num">04</span><h3>Ajuste</h3><p>O protocolo muda conforme a evolução, até o volume voltar.</p></li>
+        </ol>
+      </section>
+
+      <!-- CASOS -->
+      <section class="casos wrap" id="casos" data-scene="casos">
+        <div class="casos__head scrim">
+          <p class="eyebrow" data-reveal>Antes e depois</p>
+          <h2 class="h2" data-lines>Segundo os médicos,<br />não tinham solução.</h2>
+          <p class="lede" data-reveal>Com a investigação certa e a terapia adequada, os dois voltaram a ter cabelo em 6 meses. Arraste a linha para comparar.</p>
+        </div>
+        <div class="casos__grid">
+          <figure class="caso" data-reveal>
+            <div class="slider" data-slider>
+              <img src="/img/caso-2.webp" srcset="/img/caso-2-480.webp 480w, /img/caso-2.webp 750w" sizes="(min-width: 760px) 40vw, 92vw" alt="Depois de 6 meses: couro cabeludo repovoado" loading="lazy" decoding="async" width="750" height="1000" />
+              <img class="slider__antes" src="/img/caso-1.webp" srcset="/img/caso-1-480.webp 480w, /img/caso-1.webp 750w" sizes="(min-width: 760px) 40vw, 92vw" alt="Antes do tratamento" loading="lazy" decoding="async" width="750" height="1000" />
+              <span class="slider__tag slider__tag--antes">Antes</span>
+              <span class="slider__tag slider__tag--depois">6 meses depois</span>
+              <span class="slider__linha"><span class="slider__handle"></span></span>
+              <input class="slider__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do primeiro caso" />
+            </div>
+            <figcaption><b>Caso 01</b>Repovoamento expressivo em 6 meses de tratamento.</figcaption>
+          </figure>
+          <figure class="caso caso--b" data-reveal>
+            <div class="slider" data-slider>
+              <img src="/img/caso-4.webp" srcset="/img/caso-4-480.webp 480w, /img/caso-4.webp 750w" sizes="(min-width: 760px) 40vw, 92vw" alt="Depois de 6 meses: repovoamento recuperado" loading="lazy" decoding="async" width="750" height="1000" />
+              <img class="slider__antes" src="/img/caso-3.webp" srcset="/img/caso-3-480.webp 480w, /img/caso-3.webp 750w" sizes="(min-width: 760px) 40vw, 92vw" alt="Antes do tratamento" loading="lazy" decoding="async" width="750" height="1000" />
+              <span class="slider__tag slider__tag--antes">Antes</span>
+              <span class="slider__tag slider__tag--depois">6 meses depois</span>
+              <span class="slider__linha"><span class="slider__handle"></span></span>
+              <input class="slider__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois do segundo caso" />
+            </div>
+            <figcaption><b>Caso 02</b>Diagnosticado como queda irreversível. Recuperado em 6 meses.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- PLANOS (os perfumes do Breu) -->
+      <section class="planos wrap" id="planos" data-scene="planos">
+        <div class="planos__head scrim">
+          <p class="eyebrow" data-reveal>Terapia capilar online</p>
+          <h2 class="h2" data-lines>Três formatos,<br />um para cada momento.</h2>
+        </div>
+        <div class="planos__grid">
+          <article class="plano glass" data-reveal>
+            <div class="plano__top"><span class="plano__n">1</span><span class="plano__u">mês</span></div>
+            <p class="plano__d">Acompanhamento intensivo e de perto.</p>
+            <ul class="lista">
+              <li>4 reuniões de alinhamento, uma por semana</li>
+              <li>Brinde: protocolo nutricional com nutricionista</li>
+            </ul>
+            <p class="plano__res"><span>Resultado esperado</span>Redução da inflamação e controle da oleosidade.</p>
+            <a class="btn btn--glass" href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20queria%20consultar%20o%20valor%20do%20Plano%201%20M%C3%AAs%20da%20Terapia%20Guiada!" target="_blank" rel="noopener noreferrer">Consultar valor</a>
+          </article>
+          <article class="plano glass" data-reveal>
+            <div class="plano__top"><span class="plano__n">3</span><span class="plano__u">meses</span></div>
+            <p class="plano__d">Acompanhamento contínuo.</p>
+            <ul class="lista">
+              <li>4 reuniões no 1º mês, depois uma a cada 15 dias</li>
+              <li>Suporte pelo WhatsApp a qualquer hora</li>
+              <li>Ajuste do protocolo quando necessário</li>
+              <li>Brinde: protocolo nutricional com nutricionista</li>
+            </ul>
+            <p class="plano__res"><span>Resultado esperado</span>Queda estancada e nascimento de fios limpos.</p>
+            <a class="btn btn--glass" href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20queria%20consultar%20o%20valor%20do%20Plano%203%20Meses%20da%20Terapia%20Guiada!" target="_blank" rel="noopener noreferrer">Consultar valor</a>
+          </article>
+          <article class="plano plano--on glass" data-reveal>
+            <span class="chip chip--on"><i></i>O mais adotado</span>
+            <div class="plano__top"><span class="plano__n">6</span><span class="plano__u">meses</span></div>
+            <p class="plano__d">Resultado completo e duradouro.</p>
+            <ul class="lista">
+              <li>Tudo do plano de 3 meses, ao longo de 6 meses</li>
+              <li>Suporte pelo WhatsApp a qualquer hora</li>
+              <li>Acompanhamento prolongado da evolução</li>
+              <li>Brinde: protocolo nutricional com nutricionista</li>
+            </ul>
+            <p class="plano__res"><span>Resultado esperado</span>Inflamação zerada e fios crescendo saudáveis.</p>
+            <a class="btn btn--white" href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20queria%20consultar%20o%20valor%20do%20Plano%206%20Meses%20da%20Terapia%20Guiada!" target="_blank" rel="noopener noreferrer">Consultar valor</a>
+          </article>
+        </div>
+        <p class="planos__nota" data-reveal>Valor sob consulta, varia conforme cada caso. Em todos os planos, os produtos da Janete necessários para o tratamento são adquiridos à parte.</p>
+      </section>
+
+      <!-- DIAGNÓSTICO (o kit de provas do Breu) -->
+      <section class="diag wrap" id="diagnostico" data-scene="diagnostico">
+        <div class="diag__card glass" data-reveal>
+          <div class="diag__txt">
+            <p class="eyebrow">Para começar</p>
+            <h2 class="h2" data-lines>Primeiro,<br />o diagnóstico.</h2>
+            <p class="lede">Online ou presencial. Você descobre a causa da queda e sai com o protocolo certo para o seu caso.</p>
+            <dl class="diag__rows">
+              <div><dt>Mapeamento clínico</dt><dd>investigação da causa da queda</dd></div>
+              <div><dt>Nutricionista</dt><dd>prescrição de vitaminas incluída</dd></div>
+              <div><dt>Na clínica</dt><dd>laser, LED e massoterapia craniana, em Sapiranga</dd></div>
+            </dl>
+            <div class="diag__btns">
+              <a class="btn btn--white" href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20queria%20consultar%20o%20valor%20do%20Diagn%C3%B3stico%20Preciso%21" target="_blank" rel="noopener noreferrer">Consultar o diagnóstico</a>
+              <a class="btn btn--glass" href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20queria%20consultar%20o%20valor%20da%20Experi%C3%AAncia%20Cl%C3%ADnica%20Presencial%21" target="_blank" rel="noopener noreferrer">Atendimento presencial</a>
+            </div>
+            <p class="diag__nota">Os produtos para uso em casa são adquiridos à parte, porque cada caso pede uma fórmula diferente.</p>
+          </div>
+          <div class="diag__img">
+            <img src="/img/hero-1080.webp" srcset="/img/hero-640.webp 640w, /img/hero-1080.webp 1080w" sizes="(min-width: 760px) 40vw, 90vw" alt="O mesmo paciente antes e depois do tratamento, lado a lado" loading="lazy" decoding="async" width="1080" height="1010" />
+            <span class="diag__tag diag__tag--a">Antes</span><span class="diag__tag diag__tag--d">Depois</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE (o frasco do Breu): a foto no centro e quatro marcas apontadas -->
+      <section class="sobre wrap" id="sobre">
+        <div class="sobre__head scrim">
+          <p class="eyebrow" data-reveal>Quem vai cuidar de você</p>
+          <h2 class="h2" data-lines>Muito prazer,<br />sou a Janete.</h2>
+          <p class="lede" data-reveal>Terapeuta capilar especializada em tricologia, a ciência do cabelo e do couro cabeludo. Mais do que cuidar do fio, o meu compromisso é com a paz que você sente na frente do espelho.</p>
+        </div>
+        <div class="sobre__stage">
+          <div class="sobre__foto" data-reveal>
+            <img src="/img/janete.webp" srcset="/img/janete-520.webp 520w, /img/janete.webp 920w" sizes="(min-width: 760px) 380px, 70vw" alt="Janete Moraes, terapeuta capilar" width="920" height="1227" loading="lazy" decoding="async" />
+          </div>
+          <div class="spec spec--1" data-reveal><b>Tricologia</b><span>Olhar clínico para causas que a estética tradicional não vê</span></div>
+          <div class="spec spec--2" data-reveal><b>+20 especializações</b><span>Estudo constante na área</span></div>
+          <div class="spec spec--3" data-reveal><b>11 anos</b><span>de experiência em terapia capilar</span></div>
+          <div class="spec spec--4" data-reveal><b>Brasil e exterior</b><span>Milhares de pacientes acompanhados</span></div>
+        </div>
+      </section>
+
+      <!-- RELATOS (os depoimentos do Breu) -->
+      <section class="relatos wrap" id="relatos" data-scene="relatos">
+        <div class="relatos__head scrim">
+          <p class="eyebrow" data-reveal>Relatos recebidos por WhatsApp</p>
+          <h2 class="h2" data-lines>Quem confiou,<br />conta como foi.</h2>
+        </div>
+        <div class="relatos__grid">
+          <button type="button" class="relato glass" data-reveal data-relato="/img/feedback-1.webp"><span class="relato__img"><img src="/img/feedback-1.webp" alt="Relato de paciente pelo WhatsApp" loading="lazy" decoding="async" /></span><span class="relato__pe">Relato 01<em>Ler inteiro</em></span></button>
+          <button type="button" class="relato glass" data-reveal data-relato="/img/feedback-2.webp"><span class="relato__img"><img src="/img/feedback-2.webp" alt="Relato de paciente pelo WhatsApp" loading="lazy" decoding="async" /></span><span class="relato__pe">Relato 02<em>Ler inteiro</em></span></button>
+          <button type="button" class="relato glass" data-reveal data-relato="/img/feedback-3.webp"><span class="relato__img"><img src="/img/feedback-3.webp" alt="Relato de paciente pelo WhatsApp" loading="lazy" decoding="async" /></span><span class="relato__pe">Relato 03<em>Ler inteiro</em></span></button>
+        </div>
+      </section>
+
+      <!-- DÚVIDAS -->
+      <section class="duvidas wrap" id="duvidas">
+        <div class="duvidas__head scrim">
+          <p class="eyebrow" data-reveal>Dúvidas</p>
+          <h2 class="h2" data-lines>Antes de<br />começar.</h2>
+        </div>
+        <div class="faq-list" data-faq>
+          <div class="faq" data-reveal>
+            <button type="button" class="faq__q" aria-expanded="false">Já tentei de tudo e nada deu certo. Por que agora seria diferente?<i></i></button>
+            <div class="faq__a"><p>Produtos de prateleira tratam o sintoma genérico. Aqui a gente descobre o que o seu corpo está pedindo, unindo acolhimento e dados precisos. Quando a causa hormonal ou emocional é tratada, o cabelo reflete essa saúde e volta.</p></div>
+          </div>
+          <div class="faq" data-reveal>
+            <button type="button" class="faq__q" aria-expanded="false">Não moro em Sapiranga. O acompanhamento online funciona?<i></i></button>
+            <div class="faq__a"><p>Funciona. Uns 80% da recuperação vêm do que você aplica, come e sente em casa, seguindo a orientação. As consultas por vídeo são profundas e eu fico a uma mensagem de WhatsApp de distância.</p></div>
+          </div>
+          <div class="faq" data-reveal>
+            <button type="button" class="faq__q" aria-expanded="false">Em quanto tempo aparecem os resultados?<i></i></button>
+            <div class="faq__a"><p>Muitos pacientes se sentem mais calmos já no 1º mês, quando a queda estabiliza. O repovoamento visível aparece em média entre o 3º e o 6º mês, conforme a dedicação a cada etapa do protocolo.</p></div>
+          </div>
+          <div class="faq" data-reveal>
+            <button type="button" class="faq__q" aria-expanded="false">Tenho vergonha de mostrar o couro cabeludo. Como é a conversa?<i></i></button>
+            <div class="faq__a"><p>Na clínica ou no vídeo, o atendimento é focado no seu acolhimento e no sigilo. Eu olho para a sua dor com carinho e técnica. O objetivo é que essa seja a última vez que você se sente assim.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL -->
+      <section class="final" id="final" data-scene="final">
+        <div class="final__inner scrim">
+          <p class="eyebrow" data-reveal>Um passo de cada vez</p>
+          <h2 class="h2 final__title" data-lines>Sua jornada com o espelho<br />começa com um olá.</h2>
+          <p class="lede" data-reveal>Cada dia preso a essa angústia é um dia a menos de liberdade. Eu vou estar com você do início ao fim.</p>
+          <div class="final__btns" data-reveal>
+            <a class="btn btn--white" href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20terapia%20capilar" target="_blank" rel="noopener noreferrer">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/></svg>
+              Mandar mensagem
+            </a>
+            <a class="btn btn--glass" href="tel:+555180625399">(51) 8062-5399</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RODAPÉ: o nome monumental sobre a água; a gota de luz cai e acende as letras -->
+      <footer class="foot" data-foot>
+        <div class="foot__cols">
+          <div><b>Janete Moraes</b><span>Terapia capilar e tricologia</span><a href="#topo">Voltar ao início</a></div>
+          <div><b>Atendimento</b><span>Online para todo o Brasil e exterior</span><span>Presencial em Sapiranga, RS</span></div>
+          <div><b>Contato</b><a href="https://wa.me/555180625399" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="tel:+555180625399">+55 (51) 8062-5399</a></div>
+          <div><b>© <span data-ano>2026</span></b><span>Devolvendo sorrisos.</span><span>Desenvolvido por Arkadigital</span></div>
+        </div>
+        <div class="agua" data-agua aria-hidden="true">
+          <i class="agua__gota"></i>
+          <svg class="agua__nome"><defs><radialGradient id="janete-luz" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="0.01"><stop offset="0" stop-color="#ffffff" /><stop offset="0.35" stop-color="#e6f7f2" /><stop offset="0.75" stop-color="#9ed8ce" /><stop offset="1" stop-color="#0d1413" /></radialGradient></defs><text fill="url(#janete-luz)">janete</text></svg>
+          <svg class="agua__brilho"><text fill="url(#janete-luz)">janete</text></svg>
+          <i class="agua__linha"></i>
+          <i class="agua__anel"></i>
+          <svg class="agua__reflexo"><text fill="url(#janete-luz)">janete</text></svg>
+        </div>
+      </footer>
+    </main>
+
+    <a class="wa" data-wa href="https://wa.me/555180625399?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20terapia%20capilar" target="_blank" rel="noopener noreferrer" aria-label="Falar com a Janete pelo WhatsApp">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.480-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.290.18-1.41-.08-.13-.28-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.440-9.88 9.890-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41Z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+
+    <dialog class="lightbox" data-lightbox data-lenis-prevent>
+      <button type="button" class="lightbox__x" data-lightbox-close aria-label="Fechar">×</button>
+      <img alt="Relato de paciente pelo WhatsApp" />
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
-

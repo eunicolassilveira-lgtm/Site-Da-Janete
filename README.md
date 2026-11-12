@@ -1,20 +1,7 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Site da Janete Moraes · Terapia Capilar
 
-# Run and deploy your AI Studio app
+Vite sem framework + Tailwind 4, GSAP e Lenis.
 
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/0427d275-cdd9-4d3f-afe6-7aaa17fe3624
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- `npm install` e `npm run dev` (porta 3000)
+- `npm run build` gera `dist/` (é o que a Vercel publica)
+- Imagens: os originais ficam em `originais/` (fora do git); `node scripts/imagens.mjs` gera os WebP em `public/img/`.

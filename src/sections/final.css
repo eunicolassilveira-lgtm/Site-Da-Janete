@@ -1,0 +1,57 @@
+/* FINAL + RODAPÉ: no breu total */
+.final { position: relative; max-width: var(--maxw); margin: 0 auto; padding: 22vh var(--gutter) 18vh; }
+.final__inner { max-width: 40rem; }
+.final__title { font-size: clamp(2.6rem, 4.7vw, 5rem); }
+.lote { margin-top: 34px; max-width: 26rem; }
+.lote__bar { height: 3px; border-radius: 3px; background: rgba(216, 241, 236, 0.12); overflow: hidden; }
+.lote__bar i { display: block; height: 100%; width: calc(var(--p) * 100%); background: linear-gradient(90deg, rgba(216, 241, 236, 0.4), var(--lume)); box-shadow: 0 0 12px rgba(190, 250, 236, 0.6); }
+.lote p { margin-top: 12px; font-size: var(--t-small); color: var(--text-2); }
+.lote b { color: #fff; font-weight: 500; }
+.final__btns { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* RODAPÉ: colunas pequenas com fios em cima e o nome monumental no breu, sobre a água parada.
+   O tamanho do nome é medido (foot.js): a tinta das letras ocupa a largura toda menos uma margem mínima. */
+.foot { --m: max(10px, 1.6vw); position: relative; padding: 16vh 0 0; overflow: hidden; background: linear-gradient(to bottom, rgba(4, 5, 6, 0), var(--breu) 26vh); }
+.foot__cols { margin: 0 var(--m); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; font-size: var(--t-small); }
+.foot__cols div { display: grid; gap: 7px; align-content: start; padding-top: 14px; border-top: 1px solid var(--line); }
+.foot__cols b { font-weight: 500; color: #fff; margin-bottom: 4px; }
+.foot__cols a, .foot__cols span { color: var(--text-2); }
+.foot__cols a:hover { color: #fff; }
+
+.agua { position: relative; margin-top: clamp(40px, 7vh, 90px); height: var(--agua-h, 40vw); }
+.agua svg { position: absolute; left: var(--m); top: 0; overflow: visible; }
+.agua text { font-family: var(--font); font-weight: 400; }
+.agua__brilho { filter: blur(calc(var(--asc, 200px) * 0.09)); opacity: 0; mix-blend-mode: screen; }
+.agua__reflexo {
+  top: var(--asc, 200px) !important; transform: scaleY(-1); transform-origin: 50% 50%;
+  opacity: 0.42; filter: blur(1px);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent 62%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent 62%);
+}
+/* linhas da água sobre o reflexo */
+.agua::after {
+  content: ''; position: absolute; left: 0; right: 0; top: var(--asc, 200px); bottom: 0; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(4, 5, 6, 0) 0 2px, rgba(4, 5, 6, 0.62) 2px 3.5px);
+}
+.agua__linha {
+  position: absolute; left: 0; right: 0; top: var(--asc, 200px); height: 1px; z-index: 2;
+  background: radial-gradient(closest-side at var(--fx, 50%) 50%, rgba(240, 255, 251, 0.95), rgba(160, 236, 220, 0.25) 60%, transparent);
+  background-size: 100% 100%; opacity: 0;
+}
+.agua__gota {
+  position: absolute; z-index: 2; left: var(--fx, 50%); bottom: calc(100% - var(--asc, 200px)); width: 2px; margin-left: -1px;
+  height: calc(var(--asc, 200px) + clamp(28px, 5.5vh, 90px));
+  background: linear-gradient(to bottom, transparent, rgba(200, 250, 238, 0.5) 40%, #f4fffb);
+  box-shadow: 0 0 12px 2px rgba(170, 240, 225, 0.45);
+  transform-origin: 50% 0; transform: scaleY(0);
+}
+.agua__anel {
+  position: absolute; z-index: 2; left: var(--fx, 50%); top: var(--asc, 200px); width: 60px; height: 12px; margin: -6px 0 0 -30px;
+  border: 1.5px solid rgba(230, 255, 248, 0.9); border-radius: 50%;
+  box-shadow: 0 0 14px rgba(170, 240, 225, 0.6);
+  opacity: 0;
+}
+@media (max-width: 760px) {
+  .foot { padding-top: 8vh; }
+  .foot__cols { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+}

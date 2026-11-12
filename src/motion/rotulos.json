@@ -1,0 +1,88 @@
+[
+ {
+  "nome": "Haste do fio",
+  "x": 710,
+  "y": 382,
+  "lado": "l",
+  "em": 713
+ },
+ {
+  "nome": "Poro",
+  "x": 810,
+  "y": 714,
+  "lado": "r",
+  "em": 713
+ },
+ {
+  "nome": "Epiderme",
+  "x": 1080,
+  "y": 799,
+  "lado": "r"
+ },
+ {
+  "nome": "Derme",
+  "x": 1080,
+  "y": 1180,
+  "lado": "r"
+ },
+ {
+  "nome": "Glândula sebácea",
+  "x": 923,
+  "y": 1065,
+  "lado": "r"
+ },
+ {
+  "nome": "Músculo eretor do pelo",
+  "x": 650,
+  "y": 1069,
+  "lado": "l"
+ },
+ {
+  "nome": "Bulge: células-tronco",
+  "x": 783,
+  "y": 1353,
+  "lado": "l"
+ },
+ {
+  "nome": "Bainha radicular externa",
+  "x": 893,
+  "y": 1480,
+  "lado": "r"
+ },
+ {
+  "nome": "Bainha radicular interna",
+  "x": 854,
+  "y": 1584,
+  "lado": "l"
+ },
+ {
+  "nome": "Bulbo: onde o fio nasce",
+  "x": 1002,
+  "y": 1946,
+  "lado": "r"
+ },
+ {
+  "nome": "Papila dérmica",
+  "x": 893,
+  "y": 2000,
+  "lado": "l"
+ },
+ {
+  "nome": "Vasos que nutrem a raiz",
+  "x": 932,
+  "y": 2380,
+  "lado": "r"
+ },
+ {
+  "nome": "Glândula sudorípara",
+  "x": 1380,
+  "y": 2170,
+  "lado": "r"
+ },
+ {
+  "nome": "Hipoderme",
+  "x": 560,
+  "y": 3000,
+  "lado": "l"
+ }
+]
