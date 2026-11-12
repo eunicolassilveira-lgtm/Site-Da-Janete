@@ -1,0 +1,21 @@
+/* páginas de texto (privacidade e termos): o mesmo visual do site, sem o cenário */
+.legal { min-height: 100vh; background: radial-gradient(120% 60% at 50% 0%, #10201d 0%, var(--breu) 60%); }
+.legal__nav { display: flex; justify-content: space-between; align-items: center; padding: 26px var(--gutter); max-width: var(--maxw); margin: 0 auto; }
+.legal__nav .brand { font-size: 13px; }
+.legal__voltar { font-size: 0.9375rem; color: var(--text-2); transition: color 0.3s; }
+.legal__voltar:hover { color: #fff; }
+.legal__main { max-width: 46rem; margin: 0 auto; padding: 8vh var(--gutter) 14vh; }
+.legal__main h1 { font-weight: 400; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -0.045em; color: #fff; }
+.legal__main .data { margin-top: 16px; font-size: var(--t-small); color: var(--text-3); }
+.legal__main h2 { margin-top: 48px; font-weight: 400; font-size: 1.5rem; letter-spacing: -0.02em; color: #fff; }
+.legal__main p, .legal__main li { margin-top: 14px; color: var(--text-2); font-size: 1.0625rem; line-height: 1.7; }
+.legal__main ul { margin-top: 6px; padding-left: 1.1em; list-style: disc; }
+.legal__main li { margin-top: 8px; }
+.legal__main li::marker { color: var(--lume); }
+.legal__main strong { color: var(--marfim); font-weight: 500; }
+.legal__main a { color: var(--lume); text-decoration: underline; text-underline-offset: 3px; }
+.legal__main .caixa { margin-top: 22px; padding: 20px 22px; border-radius: 16px; background: rgba(18, 26, 25, 0.5); border: 1px solid rgba(216, 241, 236, 0.12); }
+.legal__main .caixa p:first-child { margin-top: 0; }
+.legal__foot { max-width: var(--maxw); margin: 0 auto; padding: 28px var(--gutter) 40px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: var(--t-small); color: var(--text-3); }
+.legal__foot a { color: var(--text-2); }
+.legal__foot a:hover { color: #fff; }
